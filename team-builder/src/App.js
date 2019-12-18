@@ -6,6 +6,7 @@ import team from "./team";
 
 //components
 import List from "./components/List.js";
+import Navigation from "./components/Navigation.js";
 
 import "./App.scss";
 
@@ -14,7 +15,10 @@ function App() {
 
   return (
     <div className="App">
-      <List teamList={teamList} />
+      <Navigation />
+      <Route exact path="/">
+        <List teamList={teamList} />
+      </Route>
     </div>
   );
 }

@@ -10,15 +10,33 @@ html {
 
 /* App styles starts here */
 .App {
-  border: 2px solid black;
-
   display: grid;
   place-items: center;
 }
 
+// Navigation styles here
+header {
+  width: 100%;
+  display: grid;
+  place-items: center;
+  padding: 10px 0;
+
+  nav {
+    width: 20%;
+    padding: 10px 0;
+    display: flex;
+    justify-content: space-evenly;
+
+    a {
+      text-decoration: none;
+      font-size: 1.2rem;
+      color: black;
+    }
+  }
+}
+
 /* List component styles */
 .teamContainer {
-  border: 2px solid blue;
   padding: 20px;
   width: 80%;
   display: flex;
@@ -27,14 +45,16 @@ html {
   flex-wrap: wrap;
 
   .memberContainer {
-    width: 200px;
+    width: 250px;
     height: 300px;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
     margin-right: 40px;
     margin-bottom: 20px;
+    border: 2px solid black;
+    border-radius: 10px;
 
     .imgContainer {
       width: 100%;
@@ -44,6 +64,7 @@ html {
         width: 100%;
         height: 100%;
         object-fit: cover;
+        border-radius: 10px;
       }
     }
   }
