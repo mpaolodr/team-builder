@@ -1,0 +1,50 @@
+html {
+  font-size: 62.5%;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* App styles starts here */
+.App {
+  border: 2px solid black;
+
+  display: grid;
+  place-items: center;
+}
+
+/* List component styles */
+.teamContainer {
+  border: 2px solid blue;
+  padding: 20px;
+  width: 80%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+
+  .memberContainer {
+    width: 200px;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    margin-right: 40px;
+    margin-bottom: 20px;
+
+    .imgContainer {
+      width: 100%;
+      height: 200px;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+  }
+}

@@ -42,3 +42,5 @@ const team = [
     imgUrl: "https://avatars1.githubusercontent.com/u/53955062?v=4"
   }
 ];
+
+export default team;

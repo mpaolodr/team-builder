@@ -1,12 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import { Route } from "react-router-dom";
 
-import "./App.css";
+//data
+import team from "./team";
+
+//components
+import List from "./components/List.js";
+
+import "./App.scss";
 
 function App() {
+  const [teamList, setTeamList] = useState(team);
+
   return (
     <div className="App">
-      <h1>this is working</h1>
+      <List teamList={teamList} />
     </div>
   );
 }
