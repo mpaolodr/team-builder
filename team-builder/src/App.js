@@ -13,16 +13,34 @@ import "./App.scss";
 
 function App() {
   const [teamList, setTeamList] = useState(team);
+  const [memberEdit, setMemberEdit] = useState({
+    name: "",
+    id: "",
+    role: "",
+    link: "",
+    imgUrl: ""
+  });
 
   const addMember = member => {
     const newMember = {
       name: member.name,
-      id: member.name.toLowerCase(),
+      id: teamList.length,
       role: member.role,
-      link: member.link
+      link: member.link,
+      imgUrl: member.imgUrl
     };
 
     setTeamList([...teamList, newMember]);
+  };
+
+  const editMember = existing => {
+    setMemberEdit({
+      name: existing.name,
+      id: existing.id,
+      role: existing.role,
+      link: existing.link,
+      imgUrl: existing.imgUrl
+    });
   };
 
   return (
@@ -31,10 +49,10 @@ function App() {
 
       <Switch>
         <Route path="/add">
-          <Form addMember={addMember} />
+          <Form addMember={addMember} memberEdit={memberEdit} />
         </Route>
         <Route exact path="/">
-          <List teamList={teamList} />
+          <List teamList={teamList} editMember={editMember} />
         </Route>
       </Switch>
     </div>

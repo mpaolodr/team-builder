@@ -1,6 +1,7 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
-const List = ({ teamList }) => {
+const List = ({ teamList, editMember }) => {
   return (
     <div className="teamContainer">
       {teamList.map(member => {
@@ -12,6 +13,9 @@ const List = ({ teamList }) => {
             <h2>{member.name}</h2>
             <h2>{member.role}</h2>
             <h2>{member.link}</h2>
+            <button onClick={() => editMember(member)}>
+              <Link to="/add">Edit</Link>
+            </button>
           </div>
         );
       })}

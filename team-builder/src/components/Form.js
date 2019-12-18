@@ -1,11 +1,21 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
-const Form = ({ addMember }) => {
+const Form = ({ addMember, memberEdit }) => {
   const [member, setMember] = useState({
     name: "",
     role: "",
-    link: ""
+    link: "",
+    imgUrl: ""
   });
+
+  useEffect(() => {
+    setMember({
+      name: memberEdit.name,
+      role: memberEdit.role,
+      link: memberEdit.link,
+      imgUrl: memberEdit.imgUrl
+    });
+  }, []);
 
   const handler = e => {
     setMember({
@@ -20,7 +30,8 @@ const Form = ({ addMember }) => {
     setMember({
       name: "",
       role: "",
-      link: ""
+      link: "",
+      imgUrl: ""
     });
   };
 
@@ -59,6 +70,17 @@ const Form = ({ addMember }) => {
           value={member.link}
           placeholder="GitHub Profile"
           required
+          onChange={e => handler(e)}
+        />
+      </label>
+      <label htmlFor="imgUrl">
+        ImgUrl:
+        <input
+          type="text"
+          id="imgUrl"
+          name="imgUrl"
+          value={member.imgUrl}
+          placeholder="Image URL"
           onChange={e => handler(e)}
         />
       </label>
