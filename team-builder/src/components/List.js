@@ -10,6 +10,7 @@ const List = ({ teamList }) => {
               <img src={member.imgUrl} alt="" />
             </div>
             <h2>{member.name}</h2>
+            <h2>{member.role}</h2>
             <h2>{member.link}</h2>
           </div>
         );
