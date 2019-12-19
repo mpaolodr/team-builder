@@ -1,19 +1,21 @@
 import React, { useState, useEffect } from "react";
 
-const Form = ({ addMember, memberEdit }) => {
+const Form = ({ addMember, updateUser, currentUser }) => {
   const [member, setMember] = useState({
     name: "",
     role: "",
     link: "",
-    imgUrl: ""
+    imgUrl: "",
+    id: ""
   });
 
   useEffect(() => {
     setMember({
-      name: memberEdit.name,
-      role: memberEdit.role,
-      link: memberEdit.link,
-      imgUrl: memberEdit.imgUrl
+      name: currentUser.name,
+      role: currentUser.role,
+      link: currentUser.link,
+      imgUrl: currentUser.imgUrl,
+      id: currentUser.id
     });
   }, []);
 
@@ -26,13 +28,28 @@ const Form = ({ addMember, memberEdit }) => {
 
   const onSubmit = e => {
     e.preventDefault();
-    addMember(member);
-    setMember({
-      name: "",
-      role: "",
-      link: "",
-      imgUrl: ""
-    });
+    if (member.id !== "") {
+      updateUser(member);
+      alert("info has been updated");
+      setMember({
+        name: "",
+        role: "",
+        link: "",
+        imgUrl: "",
+        id: ""
+      });
+    } else {
+      e.preventDefault();
+      addMember(member);
+      alert("succesfully added");
+      setMember({
+        name: "",
+        role: "",
+        link: "",
+        imgUrl: "",
+        id: ""
+      });
+    }
   };
 
   return (
@@ -84,7 +101,7 @@ const Form = ({ addMember, memberEdit }) => {
           onChange={e => handler(e)}
         />
       </label>
-      <button type="submit">Add</button>
+      <button type="submit">Add/Edit</button>
     </form>
   );
 };

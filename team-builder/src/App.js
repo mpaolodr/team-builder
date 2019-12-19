@@ -13,13 +13,18 @@ import "./App.scss";
 
 function App() {
   const [teamList, setTeamList] = useState(team);
-  const [memberEdit, setMemberEdit] = useState({
+
+  //initial form state
+  const initialState = {
     name: "",
     id: "",
     role: "",
     link: "",
     imgUrl: ""
-  });
+  };
+
+  //current user state
+  const [currentUser, setCurrentUser] = useState(initialState);
 
   const addMember = member => {
     const newMember = {
@@ -29,12 +34,11 @@ function App() {
       link: member.link,
       imgUrl: member.imgUrl
     };
-
     setTeamList([...teamList, newMember]);
   };
 
-  const editMember = existing => {
-    setMemberEdit({
+  const editBtn = existing => {
+    setCurrentUser({
       name: existing.name,
       id: existing.id,
       role: existing.role,
@@ -43,16 +47,28 @@ function App() {
     });
   };
 
+  const updateUser = user => {
+    const replace = teamList.map(obj =>
+      obj.id === user.id ? { ...user } : { ...obj }
+    );
+    setTeamList(replace);
+  };
+
   return (
     <div className="App">
       <Navigation />
 
       <Switch>
         <Route path="/add">
-          <Form addMember={addMember} memberEdit={memberEdit} />
+          <Form
+            addMember={addMember}
+            updateUser={updateUser}
+            currentUser={currentUser}
+            teamList={teamList}
+          />
         </Route>
         <Route exact path="/">
-          <List teamList={teamList} editMember={editMember} />
+          <List teamList={teamList} editBtn={editBtn} />
         </Route>
       </Switch>
     </div>

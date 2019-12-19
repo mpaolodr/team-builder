@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const List = ({ teamList, editMember }) => {
+const List = ({ teamList, editBtn }) => {
   return (
     <div className="teamContainer">
       {teamList.map(member => {
@@ -13,7 +13,8 @@ const List = ({ teamList, editMember }) => {
             <h2>{member.name}</h2>
             <h2>{member.role}</h2>
             <h2>{member.link}</h2>
-            <button onClick={() => editMember(member)}>
+
+            <button onClick={() => editBtn(member)}>
               <Link to="/add">Edit</Link>
             </button>
           </div>
