@@ -17,7 +17,7 @@ const Form = ({ addMember, updateUser, currentUser }) => {
       imgUrl: currentUser.imgUrl,
       id: currentUser.id
     });
-  }, []);
+  }, [currentUser]);
 
   const handler = e => {
     setMember({
@@ -53,56 +53,58 @@ const Form = ({ addMember, updateUser, currentUser }) => {
   };
 
   return (
-    <form className="form" onSubmit={e => onSubmit(e)}>
-      <label htmlFor="name">
-        Name:
-        <input
-          type="text"
-          id="name"
-          name="name"
-          value={member.name}
-          placeholder="Name"
-          required
-          onChange={e => handler(e)}
-        />
-      </label>
-      <label htmlFor="role">
-        Role:
-        <input
-          type="text"
-          id="role"
-          name="role"
-          value={member.role}
-          placeholder="Role"
-          required
-          onChange={e => handler(e)}
-        />
-      </label>
-      <label htmlFor="link">
-        Link:
-        <input
-          type="text"
-          id="link"
-          name="link"
-          value={member.link}
-          placeholder="GitHub Profile"
-          required
-          onChange={e => handler(e)}
-        />
-      </label>
-      <label htmlFor="imgUrl">
-        ImgUrl:
-        <input
-          type="text"
-          id="imgUrl"
-          name="imgUrl"
-          value={member.imgUrl}
-          placeholder="Image URL"
-          onChange={e => handler(e)}
-        />
-      </label>
-      <button type="submit">Add/Edit</button>
-    </form>
+    <div className="formContainer">
+      <form className="form" onSubmit={e => onSubmit(e)}>
+        <label htmlFor="name">
+          Name:
+          <input
+            type="text"
+            id="name"
+            name="name"
+            value={member.name}
+            placeholder="Name"
+            required
+            onChange={e => handler(e)}
+          />
+        </label>
+        <label htmlFor="role">
+          Role:
+          <input
+            type="text"
+            id="role"
+            name="role"
+            value={member.role}
+            placeholder="Role"
+            required
+            onChange={e => handler(e)}
+          />
+        </label>
+        <label htmlFor="link">
+          Link:
+          <input
+            type="text"
+            id="link"
+            name="link"
+            value={member.link}
+            placeholder="GitHub Profile"
+            required
+            onChange={e => handler(e)}
+          />
+        </label>
+        <label htmlFor="imgUrl">
+          ImgUrl:
+          <input
+            type="text"
+            id="imgUrl"
+            name="imgUrl"
+            value={member.imgUrl}
+            placeholder="Image URL"
+            onChange={e => handler(e)}
+          />
+        </label>
+        <button type="submit">Add/Edit</button>
+      </form>
+    </div>
   );
 };
 
